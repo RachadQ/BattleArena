@@ -241,7 +241,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1874180309289625312}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 23b5f6e19e2d36d48854bf2d892c1280, type: 3}
   m_Name: 
@@ -288,7 +288,6 @@ MonoBehaviour:
   localScripts:
   - {fileID: -6983251814741608592}
   localObjects:
-  - {fileID: 2871022514850285157}
   - {fileID: 1581810513463679770}
 --- !u!114 &-6983251814741608592
 MonoBehaviour:
@@ -687,6 +686,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1fea30b6a6986a740b15e6e7324df684, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  jsContainer: {fileID: 0}
+  joystick: {fileID: 0}
   inputDirection: {x: 0, y: 0, z: 0}
 --- !u!1 &8207134265980375205
 GameObject:
@@ -850,4 +851,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1fea30b6a6986a740b15e6e7324df684, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  jsContainer: {fileID: 0}
+  joystick: {fileID: 0}
   inputDirection: {x: 0, y: 0, z: 0}

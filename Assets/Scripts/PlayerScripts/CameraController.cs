@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using Photon.Pun;
 public class CameraController : MonoBehaviour
 {
     public Camera cam;
@@ -14,9 +14,14 @@ public class CameraController : MonoBehaviour
 
     private void Start()
     {
-       
-        cam = Camera.main;
-        cameraOffset = new Vector3(0,15,-10);
+
+        
+            cam = Camera.main;
+            cameraOffset = new Vector3(0, 15, -10);
+        
+        
+            
+        
         
 
     }
