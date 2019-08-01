@@ -14,7 +14,7 @@ public class Guns : BaseWeapon
 
             if (this is FireArms)
             {
-                ammo = new Ammunition() as Bullet;
+                ammo = new Bullet();
             }
         }
 

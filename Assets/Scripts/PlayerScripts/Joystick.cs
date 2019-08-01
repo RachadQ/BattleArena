@@ -8,8 +8,8 @@ public class Joystick : MonoBehaviour, IDragHandler,IPointerUpHandler, IPointerD
 {
   
 
-   public Image jsContainer;
-    public Image joystick;
+    private Image jsContainer;
+    private Image joystick;
     
     public Vector3 inputDirection;
 
