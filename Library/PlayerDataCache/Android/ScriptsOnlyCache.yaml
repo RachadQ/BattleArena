@@ -22,7 +22,7 @@ ScriptsOnlyBuild:
     - SMG
     - Sword
     PhotonUnityNetworking.Editor.dll:
-    - Photon.Pun.PunSceneSettings
+    - Photon.Pun.PhotonViewInspector
     PhotonUnityNetworking.Utilities.dll:
     - Photon.Pun.UtilityScripts.OnClickRpc
     PhotonUnityNetworking.dll:
@@ -222,17 +222,17 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 11028}
     - Class: 114
-      Script: {instanceID: 13882}
+      Script: {instanceID: 14464}
     - Class: 114
-      Script: {instanceID: 13886}
+      Script: {instanceID: 14468}
     - Class: 114
-      Script: {instanceID: 13906}
+      Script: {instanceID: 14488}
     - Class: 114
-      Script: {instanceID: 13910}
+      Script: {instanceID: 14492}
     - Class: 114
-      Script: {instanceID: 13926}
+      Script: {instanceID: 14508}
     - Class: 114
-      Script: {instanceID: 13940}
+      Script: {instanceID: 14522}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128

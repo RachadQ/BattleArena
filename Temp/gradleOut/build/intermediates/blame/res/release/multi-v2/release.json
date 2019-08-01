@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "D:\\Dev\\Unity\\Battle Arena\\Temp\\gradleOut\\build\\intermediates\\res\\merged\\release\\values_values.arsc.flat",
+            "outputFile": "D:\\Dev\\Unity\\Arena\\Temp\\gradleOut\\build\\intermediates\\res\\merged\\release\\values_values.arsc.flat",
             "map": [
                 {
-                    "source": "D:\\Dev\\Unity\\Battle Arena\\Temp\\gradleOut\\src\\main\\res\\values\\strings.xml",
+                    "source": "D:\\Dev\\Unity\\Arena\\Temp\\gradleOut\\src\\main\\res\\values\\strings.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "2",
@@ -21,7 +21,7 @@
                     }
                 },
                 {
-                    "source": "D:\\Dev\\Unity\\Battle Arena\\Temp\\gradleOut\\src\\main\\res\\values\\styles.xml",
+                    "source": "D:\\Dev\\Unity\\Arena\\Temp\\gradleOut\\src\\main\\res\\values\\styles.xml",
                     "from": {
                         "startLines": "5,2,7",
                         "startColumns": "0,0,0",
@@ -42,10 +42,10 @@
             ]
         },
         {
-            "outputFile": "D:\\Dev\\Unity\\Battle Arena\\Temp\\gradleOut\\build\\intermediates\\res\\merged\\release\\values-v21_values-v21.arsc.flat",
+            "outputFile": "D:\\Dev\\Unity\\Arena\\Temp\\gradleOut\\build\\intermediates\\res\\merged\\release\\values-v21_values-v21.arsc.flat",
             "map": [
                 {
-                    "source": "D:\\Dev\\Unity\\Battle Arena\\Temp\\gradleOut\\src\\main\\res\\values-v21\\styles.xml",
+                    "source": "D:\\Dev\\Unity\\Arena\\Temp\\gradleOut\\src\\main\\res\\values-v21\\styles.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "0",

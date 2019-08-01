@@ -11,6 +11,7 @@ public class PlayerSync : MonoBehaviourPun, IPunObservable
     Vector3 latestPos;
     Vector3 latestRot;
     
+
     public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
     {
         if (stream.IsWriting)
@@ -36,6 +37,7 @@ public class PlayerSync : MonoBehaviourPun, IPunObservable
         }
         else
         {
+            
             //player is remote, deactivate the scripts and object that should only be activated for local player
             for (int i = 0; i < localScripts.Length; i++)
             {
