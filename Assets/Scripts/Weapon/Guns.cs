@@ -14,7 +14,7 @@ public class Guns : BaseWeapon
 
             if (this is FireArms)
             {
-                ammo = new Bullet();
+                ammo = gameObject.AddComponent<Ammunition>() as Ammunition;
             }
         }
 

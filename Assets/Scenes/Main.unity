@@ -290,7 +290,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1114229325}
-  - component: {fileID: 1114229327}
   - component: {fileID: 1114229326}
   m_Layer: 0
   m_Name: GameLobby
@@ -325,21 +324,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dca2f49dbbd3b424c89e2fce1a5eb21b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &1114229327
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1114229324}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2cd0ed7420882554fa146aab6aeb2e80, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Button: 0
-  ModifierKey: 0
-  Target: 0
 --- !u!1 &1716023162
 GameObject:
   m_ObjectHideFlags: 0

@@ -7,7 +7,7 @@ public class PlayerMovement : MonoBehaviour
     public Joystick movement;
     public Joystick rotation;
     private readonly float moveSpeed = 0.2f;
-    private readonly float rotateSpeed = 0.02f;
+
     
     Rigidbody playerRb;
     Vector3 moveDirection;
