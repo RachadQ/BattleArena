@@ -23,7 +23,7 @@ public class PC : MonoBehaviour
 
     }
 
-
+    [PunRPC]
     public void SetWeapon(BaseWeapon weap)
     {
         if (currentWeapon != null)
@@ -31,16 +31,16 @@ public class PC : MonoBehaviour
             //empty slot
             currentWeapon = null;
         }
-       // currentWeapon.CoolDown = currentWeapon.MaxCoolDown;
+        currentWeapon.CoolDown = currentWeapon.MaxCoolDown;
         currentWeapon = weap;
         weap.SetWeaponlocation(weaponContainer);
       
       
 
-        Debug.Log(currentWeapon.name);
+        Debug.Log(currentWeapon.name + " " + transform.parent.name);
+       
     }
 
-  
 
   
   

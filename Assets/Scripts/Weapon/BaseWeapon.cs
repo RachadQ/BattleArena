@@ -1,8 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
-public class BaseWeapon : MonoBehaviour
+using Photon.Pun;
+public class BaseWeapon : MonoBehaviourPun
 {
     public int WielderId;
     public string WeapName { get; set; }

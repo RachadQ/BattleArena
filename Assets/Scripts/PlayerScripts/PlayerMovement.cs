@@ -7,8 +7,8 @@ public class PlayerMovement : MonoBehaviour
     public Joystick movement;
     public Joystick rotation;
     private readonly float moveSpeed = 0.2f;
-    private readonly float rotateSpeed = 0.2f;
-    Rigidbody playerRb;
+  //  private readonly float rotateSpeed = 0.2f;
+    
     Vector3 moveDirection;
     public Vector3 lookAtDirection;
     public bool isRotating;
@@ -16,7 +16,7 @@ public class PlayerMovement : MonoBehaviour
 
     void Start()
     {
-        playerRb = this.GetComponent<Rigidbody>();
+       
 
        
        

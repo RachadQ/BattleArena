@@ -7,23 +7,28 @@ public class PlayerSync : MonoBehaviourPun, IPunObservable
 {
     public MonoBehaviour[] localScripts;
     public GameObject[] localObjects;
+   // public PC playerScript;
     //values sync over network
     Vector3 latestPos;
-    Quaternion latestRot;
+    Vector3 latestRot;
     
     public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
     {
+       
         if (stream.IsWriting)
         {
             //this is our player: send others the data;
             stream.SendNext(transform.position);
-            stream.SendNext(transform.rotation);
+            stream.SendNext(transform.GetChild(0).forward);
+           // stream.SendNext(playerScript.currentWeapon);
+
         }
         else
         {
             //network player recieve data
             latestPos = (Vector3)stream.ReceiveNext();
-            latestRot = (Quaternion)stream.ReceiveNext();
+            latestRot = (Vector3)stream.ReceiveNext();
+          //  playerScript.currentWeapon = (BaseWeapon)stream.ReceiveNext();
         }
     }
 
@@ -56,7 +61,7 @@ public class PlayerSync : MonoBehaviourPun, IPunObservable
         if (!photonView.IsMine)
         {
             transform.position = Vector3.Lerp(transform.position, latestPos, Time.deltaTime * 5);
-            transform.rotation = Quaternion.Lerp(transform.rotation, latestRot, Time.deltaTime * 5);
+            transform.GetChild(0).transform.forward = latestRot;
         }
     }
 }
