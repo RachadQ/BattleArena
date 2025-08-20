@@ -1,8 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Photon.Pun;
-public class BaseWeapon : MonoBehaviourPun
+
+public class BaseWeapon : MonoBehaviour
 {
     public int WielderId;
     public string WeapName { get; set; }
@@ -14,25 +14,16 @@ public class BaseWeapon : MonoBehaviourPun
 
     public virtual void UseWeapon(Vector3 direction)
     {
-
-
         Debug.Log("base attacking");
-        
     }
 
     public virtual void UseWeapon(Transform container)
     {
-
         Debug.Log("base attacking gun");
-
-
     }
-
-
 
     public virtual void SetWeaponlocation(GameObject container)
     {
-
         //make a copy of weapon
         GameObject temp = this.gameObject;
        
@@ -40,22 +31,16 @@ public class BaseWeapon : MonoBehaviourPun
         //if already have weapon delete it
         if (container.transform.childCount > 0)
         {
-            
-          
             Destroy(container.transform.GetChild(0).gameObject);
-          
-           
         }
-        temp.GetComponent<Collider>().enabled = false;
+        UnityEngine.Collider col = temp.GetComponent<UnityEngine.Collider>();
+        if (col != null)
+        {
+            col.enabled = false;
+        }
 
         temp = Instantiate(temp, Vector3.zero, Quaternion.identity, container.transform) as GameObject;
        
         temp.transform.localPosition = Vector3.zero;
-     
-      
     }
-   
-
- 
-
 }

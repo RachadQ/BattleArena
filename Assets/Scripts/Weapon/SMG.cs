@@ -1,12 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Photon.Pun;
-using Photon.Realtime;
+
 public class SMG : Automatic
 {
 
-    public SMG()
+    void Start()
     {
         WeapName = "SMG";
         MaxRange = 10;
@@ -16,22 +15,18 @@ public class SMG : Automatic
         SetType();
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnCollisionEnter(UnityEngine.Collision collision)
     {
         Debug.Log(collision.gameObject.name);
         if (collision.gameObject.tag == "Player")
         {
             Debug.Log("clided");
             SMG gun = this;
-            collision.gameObject.GetComponent<PC>().SetWeapon(gun);
-           // PhotonNetwork.Destroy(this.gameObject);
-            //  collision.transform.GetComponent<PhotonView>().RPC("SetWeapon", Photon, gun);
-       
-           
-          
+            PC playerComponent = collision.gameObject.GetComponent<PC>();
+            if (playerComponent != null)
+            {
+                playerComponent.SetWeapon(gun);
+            }
         }
     }
-
-
-
 }

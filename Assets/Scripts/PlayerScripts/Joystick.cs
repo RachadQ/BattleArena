@@ -2,53 +2,91 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.EventSystems;
-using UnityEngine.UI;
-public class Joystick : MonoBehaviour, IDragHandler,IPointerUpHandler, IPointerDownHandler
-{
-  
 
-    private Image jsContainer;
-    private Image joystick;
-    
+// Simple joystick implementation without UI dependencies
+// This version uses Input system instead of UI components
+
+public class Joystick : MonoBehaviour
+{
     public Vector3 inputDirection;
+    public float joystickRadius = 50f;
+    
+    private bool isDragging = false;
+    private Vector2 joystickCenter;
+    private Vector2 currentTouchPosition;
 
     void Start()
     {
-        jsContainer = GetComponent<Image>();
-        joystick = transform.GetChild(0).GetComponent<Image>();
         inputDirection = Vector3.zero;
+        joystickCenter = transform.position;
     }
 
-    public void OnDrag(PointerEventData ped)
+    void Update()
     {
-        Vector2 position = Vector2.zero;
-
-        //to get input direction
-        RectTransformUtility.ScreenPointToLocalPointInRectangle(jsContainer.rectTransform, ped.position, ped.pressEventCamera, out position);
-
-        position.x = (position.x / jsContainer.rectTransform.sizeDelta.x);
-        position.y = (position.y / jsContainer.rectTransform.sizeDelta.y);
-
-        float x = (jsContainer.rectTransform.pivot.x == 1f) ? position.x * 2 + 1 : position.x * 2 - 1;
-        float y = (jsContainer.rectTransform.pivot.y == 1f) ? position.y * 2 + 1 : position.y * 2 - 1;
-
-        float z = (jsContainer.rectTransform.pivot.y == 1f) ? position.y * 2 + 1 : position.y * 2 - 1;
-
-        inputDirection = new Vector3(x, y, 0);
-        inputDirection = (inputDirection.magnitude > 1) ? inputDirection.normalized : inputDirection;
-        joystick.rectTransform.anchoredPosition = new Vector3(inputDirection.x * (jsContainer.rectTransform.sizeDelta.x / 3), inputDirection.y * (jsContainer.rectTransform.sizeDelta.y) / 3);
-    }
-
-    public void OnPointerDown(PointerEventData ped)
-    {
+        // Handle mouse input for testing
+        if (Input.GetMouseButtonDown(0))
+        {
+            Vector2 mousePos = Input.mousePosition;
+            if (Vector2.Distance(mousePos, joystickCenter) <= joystickRadius)
+            {
+                isDragging = true;
+            }
+        }
         
-        OnDrag(ped);
-    }
-
-    public void OnPointerUp(PointerEventData eventData)
-    {
-        inputDirection = Vector3.zero;
-        joystick.rectTransform.anchoredPosition = Vector3.zero;
+        if (Input.GetMouseButton(0) && isDragging)
+        {
+            Vector2 mousePos = Input.mousePosition;
+            Vector2 direction = mousePos - joystickCenter;
+            
+            if (direction.magnitude > joystickRadius)
+            {
+                direction = direction.normalized * joystickRadius;
+            }
+            
+            inputDirection = new Vector3(direction.x / joystickRadius, direction.y / joystickRadius, 0);
+        }
+        
+        if (Input.GetMouseButtonUp(0))
+        {
+            isDragging = false;
+            inputDirection = Vector3.zero;
+        }
+        
+        // Handle touch input for mobile
+        if (Input.touchCount > 0)
+        {
+            Touch touch = Input.GetTouch(0);
+            
+            switch (touch.phase)
+            {
+                case TouchPhase.Began:
+                    if (Vector2.Distance(touch.position, joystickCenter) <= joystickRadius)
+                    {
+                        isDragging = true;
+                    }
+                    break;
+                    
+                case TouchPhase.Moved:
+                case TouchPhase.Stationary:
+                    if (isDragging)
+                    {
+                        Vector2 direction = touch.position - joystickCenter;
+                        
+                        if (direction.magnitude > joystickRadius)
+                        {
+                            direction = direction.normalized * joystickRadius;
+                        }
+                        
+                        inputDirection = new Vector3(direction.x / joystickRadius, direction.y / joystickRadius, 0);
+                    }
+                    break;
+                    
+                case TouchPhase.Ended:
+                case TouchPhase.Canceled:
+                    isDragging = false;
+                    inputDirection = Vector3.zero;
+                    break;
+            }
+        }
     }
 }

@@ -34,6 +34,8 @@ public class PlayerMovement : MonoBehaviour
 
     public void Move()
     {
+        if (movement == null) return;
+        
         moveDirection.x = movement.inputDirection.x;
         moveDirection.z = movement.inputDirection.y;
         //if joystick is moving
@@ -50,6 +52,8 @@ public class PlayerMovement : MonoBehaviour
 
     public void LookAt()
     {
+        if (rotation == null || target == null) return;
+        
         lookAtDirection.x = rotation.inputDirection.x;
         lookAtDirection.z = rotation.inputDirection.y;
 

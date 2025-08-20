@@ -1,29 +1,29 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Photon.Pun;
-[SerializeField]
+
 public class PC : MonoBehaviour
 {
     public int Id { get; set; }
     public GameObject weaponContainer;
     public BaseWeapon currentWeapon;
     private readonly int maxHealth = 100;
-    public int CurrentHealth { get { return maxHealth; } set { CurrentHealth = value; } }
+    private int currentHealth;
+    public int CurrentHealth { get { return currentHealth; } set { currentHealth = value; } }
     public bool IsAlive { get { return CurrentHealth > 0; } }
-    public bool IsSelf { get { return Id == currentWeapon.WielderId; } }
+    public bool IsSelf { get { return currentWeapon != null && Id == currentWeapon.WielderId; } }
     public PlayerMovement GetDirection;
     public bool canAttack = false;
     public bool shootBullet = false;
+    
     private void Start()
     {
-        //  currentHealth = maxHealth;
-        currentWeapon = new BoxingGloves();
+        currentHealth = maxHealth;
+        // Initialize with default weapon data - will be set properly when weapon is equipped
+        currentWeapon = null;
     //    Debug.Log(currentWeapon.WeapName);
-
     }
 
-    [PunRPC]
     public void SetWeapon(BaseWeapon weap)
     {
         if (currentWeapon != null)
@@ -31,19 +31,14 @@ public class PC : MonoBehaviour
             //empty slot
             currentWeapon = null;
         }
-        currentWeapon.CoolDown = currentWeapon.MaxCoolDown;
         currentWeapon = weap;
-        weap.SetWeaponlocation(weaponContainer);
-      
-      
-
-        Debug.Log(currentWeapon.name + " " + transform.parent.name);
-       
+        if (currentWeapon != null)
+        {
+            currentWeapon.CoolDown = currentWeapon.MaxCoolDown;
+            weap.SetWeaponlocation(weaponContainer);
+            Debug.Log(currentWeapon.name + " " + transform.parent.name);
+        }
     }
-
-
-  
-  
 
     // Update is called once per frame
     void Update()
@@ -76,6 +71,7 @@ public class PC : MonoBehaviour
 
     private void WeaponCoolDown()
     {
+        if (currentWeapon == null) return;
        
         if (currentWeapon.CoolDown < currentWeapon.MaxCoolDown)
         {
@@ -90,7 +86,7 @@ public class PC : MonoBehaviour
   
     public void Attack()
     {
-     
+        if (currentWeapon == null) return;
 
         if (currentWeapon is Guns)
         {
@@ -103,7 +99,10 @@ public class PC : MonoBehaviour
         }
         else
         {
-            currentWeapon.UseWeapon(GetDirection.lookAtDirection);
+            if (GetDirection != null)
+            {
+                currentWeapon.UseWeapon(GetDirection.lookAtDirection);
+            }
             
         }
         Debug.Log("fired");

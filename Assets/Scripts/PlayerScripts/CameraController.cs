@@ -27,6 +27,7 @@ public class CameraController : MonoBehaviour
 
     private void LateUpdate()
     {
+        if (target == null || cam == null) return;
 
         Vector3 newPos = target.transform.position + cameraOffset;
         
